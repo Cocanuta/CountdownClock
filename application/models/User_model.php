@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * User_model.php
  * Created by Ben Cherrington.
@@ -14,7 +14,7 @@ class User_model extends CI_Model
         $this->load->database();
     }
 
-    public function create_user($username, $email, $firstname, $lastname, $dob, $country, $password)
+    public function create_user($username, $email, $firstname, $lastname, $dob, $country, $timezone, $password)
     {
         $data = array(
             'Username'      => $username,
@@ -23,10 +23,57 @@ class User_model extends CI_Model
             'Email'         => $email,
             'DateOfBirth'   => $dob,
             'Country'       => $country,
+            'Timezone'      => $timezone,
             'Password'      => $this->hash_password($password),
         );
 
         return $this->db->insert('users', $data);
+    }
+
+    public function update_user_password($username, $oldPassword, $newPassword)
+    {
+        if($this->resolve_user_login($username, $oldPassword))
+        {
+            $data = array(
+                'Password' => $this->hash_password($newPassword),
+            );
+
+            $this->db->where('ID', $this->get_user_id_from_username($username));
+            return $this->db->update('users', $data);
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function update_user($userid, $firstname, $lastname, $dob, $country, $timezone)
+    {
+        $data = array();
+
+        if($firstname !== null)
+        {
+            $data['FirstName'] = $firstname;
+        }
+        if($lastname !== null)
+        {
+            $data['LastName'] = $lastname;
+        }
+        if($dob !== null)
+        {
+            $data['DateOfBirth'] = $dob;
+        }
+        if($country !== null)
+        {
+            $data['Country'] = $country;
+        }
+        if($timezone !== null)
+        {
+            $data['Timezone'] = $timezone;
+        }
+
+        $this->db->where('ID', $userid);
+        return $this->db->update('users', $data);
     }
 
     public function resolve_user_login($username, $password)

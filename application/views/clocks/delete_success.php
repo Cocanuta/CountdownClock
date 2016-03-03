@@ -3,10 +3,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <h1>Thank you for registering your new account!</h1>
+                <h1>Clock Deleted!</h1>
             </div>
-            <p>You have successfully registered.</p></br>
-            <p>Proceed to <a href="<?php echo base_url('login'); ?>">Login</a></p></br>
+            <p>You have successfully deleted the countdown clock.</p></br>
+            <p>Go <a href="<?php echo base_url(''); ?>">Home</a></p></br>
+
         </div>
     </div>
 </div>

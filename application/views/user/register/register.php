@@ -28,6 +28,8 @@
             <div class="form-group">
                 <label for="firstname">First Name</label>
                 <input type="text" class="form-control" id="firstname" name="firstname">
+            </div>
+            <div class="form-group">
                 <label for="lastname">Last Name</label>
                 <input type="text" class="form-control" id="lastname" name="lastname">
             </div>
@@ -41,7 +43,11 @@
             </div>
             <div class="form-group">
                 <label for="country">Country</label>
-                <select class="form-control bfh-countries" data-country="GB" id="country" name="country"></select>
+                <select class="form-control bfh-countries" data-country="US" id="country" name="country"></select>
+            </div>
+            <div class="form-group">
+                <label for="timezone">Timezone</label>
+                <select class="form-control bfh-timezones" data-country="country" id="timezone" name="timezone"></select>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>

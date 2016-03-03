@@ -3,10 +3,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <h1>Thank you for registering your new account!</h1>
+                <h1>Clock Added</h1>
             </div>
-            <p>You have successfully registered.</p></br>
-            <p>Proceed to <a href="<?php echo base_url('login'); ?>">Login</a></p></br>
+            <p>Your clock has been added!</p></br>
+            <p>View your clocks <a href="<?php echo base_url('user'); ?>">here</a></p></br>
         </div>
     </div>
 </div>
